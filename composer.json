@@ -1,0 +1,24 @@
+{
+    "type": "project",
+    "name": "zoujingli/think-smarty",
+    "homepage": "https://www.ctolog.com",
+    "description": "ThinkPHP5 Smarty Template Driver",
+    "license": "MIT",
+    "keywords": [
+        "think-smarty",
+		"thinkphp5"
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+	"support": {
+        "issues": "https://github.com/zoujingli/think-smarty/issues"
+    },
+    "autoload": {
+        "classmap": {
+            "think\\view\\driver\Samrty": "src/Samrty.php"
+        }
+    }
+}
+
+
