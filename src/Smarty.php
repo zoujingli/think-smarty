@@ -70,8 +70,7 @@ class Smarty {
         $request = request();
         $default = [
             '__ROOT__' => pathinfo($request->baseFile(true), PATHINFO_DIRNAME),
-            '__URL__'  => $request->url(TRUE),
-            '__URI__'  => $request->baseUrl(TRUE),
+            '__SELF__' => $request->url(TRUE),
             '__APP__'  => $request->baseFile(TRUE)
         ];
         $default['__LIB__'] = $default['__ROOT__'] . '/static/plugs';
@@ -79,7 +78,7 @@ class Smarty {
         $default['__UPLOAD__'] = $default['__ROOT__'] . '/static/upload';
         // 赋值模板变量
         !empty($template) && $this->template->assign($data);
-        echo str_replace(array_keys($default), array_values($default), $this->fetch($template));
+        echo str_replace(array_keys($default), array_values($default), $this->template->fetch($template));
     }
 
     /**
