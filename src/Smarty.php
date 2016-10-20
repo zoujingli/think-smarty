@@ -66,9 +66,23 @@ class Smarty {
         }
         // 记录视图信息
         App::$debug && Log::record('[ VIEW ] ' . $template . ' [ ' . var_export(array_keys($data), true) . ' ]', 'info');
-        foreach ($data as $key => $val) {
-            $this->template->assign($key, $val);
-        }
+        // 定义模板常量
+        $request = request();
+        $default = [
+            '__ROOT__' => pathinfo($request->baseFile(true), PATHINFO_DIRNAME),
+            '__URL__'  => $request->url(TRUE),
+            '__URI__'  => $request->baseUrl(TRUE),
+            '__APP__'  => $request->baseFile(TRUE)
+        ];
+        $default['__LIB__'] = $default['__ROOT__'] . '/static/plugs';
+        $default['__STATIC__'] = $default['__ROOT__'] . '/static';
+        $default['__UPLOAD__'] = $default['__ROOT__'] . '/static/upload';
+        echo '<pre>';
+        echo var_export($default, TRUE);
+        exit;
+        $this->template->assign($default);
+        // 赋值模板变量
+        !empty($template) && $this->template->assign($data);
         echo $this->template->fetch($template);
     }
 
