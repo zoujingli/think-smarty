@@ -1,12 +1,13 @@
-# think-smarty
+think-smarty
+--
 ThinkPHP5 Smarty 引擎驱动
 
-## 安装方法
-
+安装方法
+--
 使用composer安装模版引擎方法: `composer require zoujingli/think-smarty`
 
-## ThinkPHP5 配置文件中`template`参数
-
+ThinkPHP5 配置文件中`template`参数
+--
 ```
 [
 	// 模板引擎类型，指定为'Smarty'
@@ -29,7 +30,8 @@ ThinkPHP5 Smarty 引擎驱动
 ```
 那么在控制器 `index/index::index` 中 `return view();`时会加载模板 `index/view/index.index.tpl`
 
-## 模板常量定义
+模板常量定义
+--
 ```
 [
   '__ROOT__' => 'http://localhost/service/public',
@@ -41,3 +43,4 @@ ThinkPHP5 Smarty 引擎驱动
   '__UPLOAD__' => 'http://localhost/service/public/static/upload',
 ]
 ```
+以上关键字，在模板可以直接使用哦
