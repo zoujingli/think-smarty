@@ -77,10 +77,9 @@ class Smarty {
         $default['__LIB__'] = $default['__ROOT__'] . '/static/plugs';
         $default['__STATIC__'] = $default['__ROOT__'] . '/static';
         $default['__UPLOAD__'] = $default['__ROOT__'] . '/static/upload';
-        $this->template->assign($default);
         // 赋值模板变量
         !empty($template) && $this->template->assign($data);
-        echo $this->template->fetch($template);
+        echo str_replace(array_keys($default), array_values($default), $this->fetch($template));
     }
 
     /**
