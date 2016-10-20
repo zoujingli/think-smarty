@@ -6,20 +6,19 @@
     "license": "MIT",
     "keywords": [
         "think-smarty",
-		"thinkphp5"
+        "thinkphp5"
     ],
     "require": {
         "php": ">=5.4.0",
-		"smarty/smarty": "^3.1"
+        "smarty/smarty": "^3.1"
     },
-	"support": {
+    "support": {
         "issues": "https://github.com/zoujingli/think-smarty/issues"
     },
     "autoload": {
         "classmap": {
-            "think\\view\\driver\Samrty": "src/Samrty.php"
+            "think\\view\\driver\\Samrty": "src/Samrty.php"
         }
     }
 }
-
 
