@@ -17,7 +17,7 @@
     },
     "autoload": {
         "classmap": {
-            "think\\view\\driver\\Samrty": "src/Samrty.php"
+            "think\\view\\driver\\Samrty": "src/Smarty.php"
         }
     }
 }
