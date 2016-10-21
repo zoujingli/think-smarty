@@ -27,21 +27,25 @@ class Smarty {
             'debug'        => App::$debug,
             'tpl_begin'    => '{',
             'tpl_end'      => '}',
-            'view_path'    => App::$modulePath . 'view' . DS,
+            'view_path'    => '',
             'cache_path'   => RUNTIME_PATH . 'temp' . DS, // 模板缓存目录
             'cache_prefix' => '',
             'cache_suffix' => '.php',
+            'tpl_dir'      => [$this->config['view_path'], APP_PATH . 'public' . DS . 'view'],
         ];
         $this->config = array_merge($default, $config);
         if (empty($this->config['view_path'])) {
             $this->config['view_path'] = App::$modulePath . 'view' . DS;
         }
+        if (empty($this->config['cache_path'])) {
+            $this->config['cache_path'] = RUNTIME_PATH . 'temp' . DS;
+        }
         $this->template = new BasicSmarty();
         $this->template->setLeftDelimiter($this->config['tpl_begin']);
         $this->template->setRightDelimiter($this->config['tpl_end']);
-        $this->template->setCaching(!App::$debug);
-        $this->template->setForceCompile(!App::$debug); #是否强制编译
-        $this->template->setTemplateDir($this->config['view_path']); #设置模板目录
+        $this->template->setCaching(!$this->config['debug']);
+        $this->template->setForceCompile(!$this->config['debug']); #是否强制编译
+        $this->template->setTemplateDir($this->config['tpl_dir']); #设置模板目录
         $this->template->merge_compiled_includes = true; #合并编译导入
         $this->template->setCacheDir($this->config['cache_path']); #设置缓存目录
         $this->template->setCompileDir($this->config['cache_path']); #设置编译目录
