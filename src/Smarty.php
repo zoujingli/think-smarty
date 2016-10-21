@@ -31,12 +31,13 @@ class Smarty {
             'cache_path'   => RUNTIME_PATH . 'temp' . DS, // 模板缓存目录
             'cache_prefix' => '',
             'cache_suffix' => '.php',
-            'tpl_dir'      => [$this->config['view_path'], APP_PATH . 'public' . DS . 'view'],
+            'tpl_dir'      => [APP_PATH . 'public' . DS . 'view'],
         ];
         $this->config = array_merge($default, $config);
         if (empty($this->config['view_path'])) {
             $this->config['view_path'] = App::$modulePath . 'view' . DS;
         }
+        $this->config['tpl_dir'][] = $this->config['view_path'];
         if (empty($this->config['cache_path'])) {
             $this->config['cache_path'] = RUNTIME_PATH . 'temp' . DS;
         }
