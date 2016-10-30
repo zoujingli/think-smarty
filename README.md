@@ -1,3 +1,8 @@
+[![Latest Stable Version](https://poser.pugx.org/zoujingli/think-smarty/v/stable)](https://packagist.org/packages/zoujingli/think-smarty)
+[![Total Downloads](https://poser.pugx.org/zoujingli/think-smarty/downloads)](https://packagist.org/packages/zoujingli/think-smarty)
+[![Latest Unstable Version](https://poser.pugx.org/zoujingli/think-smarty/v/unstable)](https://packagist.org/packages/zoujingli/think-smarty)
+[![License](https://poser.pugx.org/zoujingli/think-smarty/license)](https://packagist.org/packages/zoujingli/think-smarty)
+
 # think-smarty
 ThinkPHP5 Smarty 引擎驱动
 
