@@ -130,6 +130,23 @@ class Smarty {
         }
         return $path . ltrim($template, '/') . '.' . ltrim($this->config['view_suffix'], '.');
     }
+	
+	/**
+     * 配置或者获取模板引擎参数
+     * @access private
+     * @param string|array  $name 参数名
+     * @param mixed         $value 参数值
+     * @return mixed
+     */
+    public function config($name, $value = null) {
+        if (is_array($name)) {
+            $this->config = array_merge($this->config, $name);
+        } elseif (is_null($value)) {
+            return isset($this->config[$name]) ? $this->config[$name] : null;
+        } else {
+            $this->config[$name] = $value;
+        }
+    }
 
     public function __call($method, $params) {
         return call_user_func_array([$this->template, $method], $params);
