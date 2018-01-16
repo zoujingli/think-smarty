@@ -32,6 +32,7 @@ class Smarty {
             'cache_prefix' => '',
             'cache_suffix' => '.php',
             'tpl_dir'      => [APP_PATH . 'public' . DS . 'view'],
+            'tpl_replace_string' => [],
         ];
         $this->config = array_merge($default, $config);
         if (empty($this->config['view_path'])) {
