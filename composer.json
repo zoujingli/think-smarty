@@ -1,24 +1,24 @@
 {
-    "type": "project",
-    "name": "zoujingli/think-smarty",
-    "homepage": "https://www.ctolog.com",
-    "description": "ThinkPHP5 Smarty Template Driver",
-    "license": "MIT",
-    "keywords": [
-        "think-smarty",
-        "thinkphp5"
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "smarty/smarty": "^3.1"
-    },
-    "support": {
-        "issues": "https://github.com/zoujingli/think-smarty/issues"
-    },
-    "autoload": {
-        "classmap": {
-            "think\\view\\driver\\Smarty": "src/Smarty.php"
-        }
-    }
+  "type": "library",
+  "name": "zoujingli/think-smarty",
+  "homepage": "https://www.ctolog.com",
+  "description": "ThinkPHP5 Smarty Template Driver",
+  "license": "MIT",
+  "keywords": [
+    "think-smarty",
+    "thinkphp5.0"
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "smarty/smarty": "^3.1",
+    "topthink/framework": "5.0.*"
+  },
+  "support": {
+    "issues": "https://github.com/zoujingli/think-smarty/issues"
+  },
+  "autoload": {
+    "classmap": [
+      "src"
+    ]
+  }
 }
-

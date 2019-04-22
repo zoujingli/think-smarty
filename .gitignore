@@ -1,0 +1,6 @@
+/.git
+/.svn
+/.idea
+/vendor
+/nbproject
+/composer.lock

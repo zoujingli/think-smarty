@@ -1,8 +1,7 @@
 <?php
 
 /**
- * ThinkPHP 5.x Smarty 驱动器
- * 
+ * ThinkPHP 5.0.x Smarty 驱动器
  * @author Anyon <zoujingli@qq.com>
  * @date 2016/10/20 09:57
  */
@@ -16,22 +15,24 @@ use think\Loader;
 use think\Log;
 use think\Request;
 
-class Smarty {
+class Smarty
+{
 
     private $template = null;
     private $config = [];
     protected $storage;
 
-    public function __construct($config = []) {
+    public function __construct($config = [])
+    {
         $default = [
-            'debug'        => App::$debug,
-            'tpl_begin'    => '{',
-            'tpl_end'      => '}',
-            'view_path'    => '',
-            'cache_path'   => RUNTIME_PATH . 'temp' . DS, // 模板缓存目录
-            'cache_prefix' => '',
-            'cache_suffix' => '.php',
-            'tpl_dir'      => [APP_PATH . 'public' . DS . 'view'],
+            'debug'              => App::$debug,
+            'tpl_begin'          => '{',
+            'tpl_end'            => '}',
+            'view_path'          => '',
+            'cache_path'         => RUNTIME_PATH . 'temp' . DS, // 模板缓存目录
+            'cache_prefix'       => '',
+            'cache_suffix'       => '.php',
+            'tpl_dir'            => [APP_PATH . 'public' . DS . 'view'],
             'tpl_replace_string' => [],
         ];
         $this->config = array_merge($default, $config);
@@ -56,12 +57,14 @@ class Smarty {
     /**
      * 渲染模板文件
      * @access public
-     * @param string    $template 模板文件
-     * @param array     $data 模板变量
-     * @param array     $config 模板参数
+     * @param string $template 模板文件
+     * @param array $data 模板变量
+     * @param array $config 模板参数
      * @return void
+     * @throws \SmartyException
      */
-    public function fetch($template, $data = [], $config = []) {
+    public function fetch($template, $data = [], $config = [])
+    {
         if ('' == pathinfo($template, PATHINFO_EXTENSION)) {
             // 获取模板文件名
             $template = $this->parseTemplate($template);
@@ -76,8 +79,8 @@ class Smarty {
         $request = request();
         $default = [
             '__ROOT__' => pathinfo($request->baseFile(true), PATHINFO_DIRNAME),
-            '__SELF__' => $request->url(TRUE),
-            '__APP__'  => $request->baseFile(TRUE)
+            '__SELF__' => $request->url(true),
+            '__APP__'  => $request->baseFile(true),
         ];
         $default['__LIB__'] = $default['__ROOT__'] . '/static/plugs';
         $default['__STATIC__'] = $default['__ROOT__'] . '/static';
@@ -90,12 +93,14 @@ class Smarty {
     /**
      * 渲染模板内容
      * @access public
-     * @param string    $template 模板内容
-     * @param array     $data 模板变量
-     * @param array     $config 模板参数
+     * @param string $template 模板内容
+     * @param array $data 模板变量
+     * @param array $config 模板参数
      * @return void
+     * @throws \SmartyException
      */
-    public function display($template, $data = [], $config = []) {
+    public function display($template, $data = [], $config = [])
+    {
         $this->fetch($template, $data, $config);
     }
 
@@ -105,7 +110,8 @@ class Smarty {
      * @param string $template 模板文件规则
      * @return string
      */
-    private function parseTemplate($template) {
+    private function parseTemplate($template)
+    {
         // 获取视图根目录
         if (strpos($template, '@')) {
             // 跨模块调用
@@ -131,15 +137,16 @@ class Smarty {
         }
         return $path . ltrim($template, '/') . '.' . ltrim($this->config['view_suffix'], '.');
     }
-	
-	/**
+
+    /**
      * 配置或者获取模板引擎参数
      * @access private
-     * @param string|array  $name 参数名
-     * @param mixed         $value 参数值
+     * @param string|array $name 参数名
+     * @param mixed $value 参数值
      * @return mixed
      */
-    public function config($name, $value = null) {
+    public function config($name, $value = null)
+    {
         if (is_array($name)) {
             $this->config = array_merge($this->config, $name);
         } elseif (is_null($value)) {
@@ -149,7 +156,8 @@ class Smarty {
         }
     }
 
-    public function __call($method, $params) {
+    public function __call($method, $params)
+    {
         return call_user_func_array([$this->template, $method], $params);
     }
 

@@ -4,7 +4,9 @@
 [![License](https://poser.pugx.org/zoujingli/think-smarty/license)](https://packagist.org/packages/zoujingli/think-smarty)
 
 # think-smarty
-ThinkPHP5 Smarty 引擎驱动
+ThinkPHP5.0 Smarty 引擎驱动
+
+目前只支持`ThinkPHP5.0`仔细查看！
 
 ## 安装方法
 
